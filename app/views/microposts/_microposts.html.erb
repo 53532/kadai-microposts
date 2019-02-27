@@ -6,11 +6,14 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to micropost.user.name, user_path(micropost.user) %><span class="tect-muted">posted at<%= micropots.created_at %></span>
+          <%= link_to micropost.user.name, user_path(micropost.user) %><span class="text-muted">posted at<%= micropost.created_at %></span>
         </div>
         <div>
           <p><%= micropost.content %></p>
         </div>
+          <% if current_user == micropost.user %>
+            <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
       </div>
     </li>
     <% end %>
